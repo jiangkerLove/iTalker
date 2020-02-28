@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:elevation="@dimen/len_2"
+        tools:targetApi="lollipop"
+        android:outlineProvider="bounds"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionBarWithStatusBarSize">
+        <FrameLayout
+            android:layout_marginTop="@dimen/statusBarSize"
+            android:layout_width="match_parent"
+            android:paddingLeft="@dimen/len_4"
+            android:paddingRight="@dimen/len_4"
+            android:layout_height="match_parent">
+
+            <com.example.common.widget.PortraitView
+                android:id="@+id/im_portrait"
+                android:layout_width="@dimen/len_40"
+                android:foreground="@drawable/ic_touch_menu"
+                android:layout_height="@dimen/len_40"
+                android:padding="@dimen/len_4"
+                android:layout_margin="@dimen/len_4"
+                android:scaleType="centerCrop"
+                android:src="@drawable/default_portrait"/>
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.Title"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:text="@string/app_name"/>
+
+            <ImageView
+                android:id="@+id/im_search"
+                android:layout_width="@dimen/len_40"
+                android:layout_height="@dimen/len_40"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_search"
+                android:foreground="@drawable/ic_touch_menu"
+                android:layout_margin="@dimen/len_4"
+                android:scaleType="centerInside"
+                android:tint="?attr/toolbarMenuIconColor"
+                android:padding="@dimen/len_10"
+                android:layout_gravity="end|center_vertical"/>
+        </FrameLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:id="@+id/lay_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/len_52"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </FrameLayout>
+
+    <net.qiujuer.genius.ui.widget.FloatActionButton
+        android:id="@+id/btn_action"
+        android:tint="@color/white"
+        android:translationY="@dimen/len_76"
+        android:padding="@dimen/len_20"
+        android:src="@drawable/ic_group_add"
+        android:layout_width="@dimen/len_52"
+        app:gBackgroundColor="@color/colorAccent"
+        android:layout_height="@dimen/len_52"
+        app:layout_anchor="@id/lay_container"
+        app:layout_anchorGravity="bottom|end"
+        android:layout_marginBottom="@dimen/len_68"
+        android:layout_marginEnd="@dimen/len_16"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/len_52"
+        android:layout_gravity="bottom"
+        app:itemIconTint="@color/text_nav"
+        app:itemTextColor="@color/text_nav"
+        android:elevation="@dimen/len_4"
+        android:translationZ="@dimen/len_8"
+        android:outlineProvider="bounds"
+        app:menu="@menu/navigation_items"
+        tools:targetApi="lollipop" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
