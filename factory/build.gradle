@@ -26,33 +26,17 @@ android {
         sourceCompatibility = sdk_version
         targetCompatibility = sdk_version
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation "androidx.appcompat:appcompat:$support_version"
-    implementation "androidx.recyclerview:recyclerview:$support_version"
-
-
-    implementation "com.jakewharton:butterknife:$butterknife_version"
-    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
-
     testImplementation "junit:junit:$test_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 
+    implementation "com.aliyun.dpa:oss-android-sdk:+"
 
-    //noinspection GradleCompatible
-    implementation "com.android.support:design:$design_version"
-
-    implementation "net.qiujuer.genius:ui:$genius_version"
-    implementation "net.qiujuer.genius:res:$genius_version"
-    implementation "de.hdodenhof:circleimageview:$circle_imageview_version"
-    implementation "com.github.bumptech.glide:glide:$glide_version"
-
-    implementation "net.qiujuer.genius:kit-handler:$genius_version"
-
-    api project(path: ':lang')
-    api project(path: ':factory')
 }

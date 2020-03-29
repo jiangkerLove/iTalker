@@ -10,6 +10,8 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.lang.utils.Journal;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -26,7 +28,6 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
         // 初始化参数
         initArgs(getArguments());
 
@@ -35,6 +36,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Journal.i(this.getClass().toString());
         if (mRoot == null) {
             int layId = getContentLayoutId();
             // 初始化当前的跟布局，但是不在创建时就添加到container里边

@@ -17,10 +17,10 @@ public class NavHelper<T> {
     //用于初始化一些必须要的参数
     private final Context mContext;
     private final int mContainerId;
-    private  final FragmentManager mFragmentManager;
+    private final FragmentManager mFragmentManager;
     private final Tab.OnTabChangedListener<T> mListener;
     //所有的Tab集合
-    private final SparseArray<Tab<T>> mtabs = new SparseArray();
+    private final SparseArray<Tab<T>> mtabs = new SparseArray<>();
     //当前的一个选中的Tab
     private Tab<T> mCurrentTab;
 
@@ -130,7 +130,7 @@ public class NavHelper<T> {
      */
     public static class Tab<T>{
 
-        //Fragment对应的calss信息
+        //Fragment对应的class信息
         public Class<?> clx;
         //额外的字段，用户自己设定需要使用
         public T extra;

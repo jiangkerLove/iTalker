@@ -37,8 +37,8 @@ public class GalleryFragment extends BottomSheetDialogFragment
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        //我们先使用默认的dialog
-        return new TransStatusBottomSheetDialog(getContext());
+        //返回复写的
+        return new TransStatusBottomSheetDialog(Objects.requireNonNull(getContext()));
     }
 
     @Override
@@ -88,7 +88,7 @@ public class GalleryFragment extends BottomSheetDialogFragment
         void onSelectedImage(String path);
     }
 
-    private static class TransStatusBottomSheetDialog extends BottomSheetDialog {
+    public static class TransStatusBottomSheetDialog extends BottomSheetDialog {
 
         public TransStatusBottomSheetDialog(@NonNull Context context) {
             super(context);

@@ -1,18 +1,15 @@
-package com.example.italker;
+package com.example.italker.activities;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
+import android.content.Context;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnticipateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
@@ -20,7 +17,9 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.example.common.app.BaseActivity;
 import com.example.common.widget.PortraitView;
+import com.example.italker.R;
 import com.example.italker.activities.AccountActivity;
+import com.example.italker.frags.assist.PermissionsFragment;
 import com.example.italker.frags.main.ActiveFragment;
 import com.example.italker.frags.main.ContactFragment;
 import com.example.italker.frags.main.GroupFragment;
@@ -60,6 +59,10 @@ public class MainActivity extends BaseActivity
 
     private NavHelper<Integer> mNavHelper;
 
+    public static void show(Context context) {
+        context.startActivity(new Intent(context, MainActivity.class));
+    }
+
     @Override
     protected int getContentLayoutId() {
         return R.layout.activity_main;
@@ -74,17 +77,7 @@ public class MainActivity extends BaseActivity
                 .add(R.id.action_group, new NavHelper.Tab<>(GroupFragment.class, R.string.title_group))
                 .add(R.id.action_contact, new NavHelper.Tab<>(ContactFragment.class, R.string.title_contact));
         mNavigation.setOnNavigationItemSelectedListener(this);
-        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat
-                    .requestPermissions(MainActivity.this, new String[]{Manifest.permission
-                            .READ_EXTERNAL_STORAGE}, 1);
-        } else {
-            initGallery();
-        }
-    }
 
-    private void initGallery() {
         Glide.with(this)
                 .load(R.drawable.bg_src_morning)
                 .centerCrop()
@@ -94,6 +87,7 @@ public class MainActivity extends BaseActivity
                         this.view.setBackground(resource.getCurrent());
                     }
                 });
+
     }
 
     @Override
@@ -161,17 +155,4 @@ public class MainActivity extends BaseActivity
                 .start();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case 1:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    initGallery();
-                } else {
-                    Toast.makeText(this, "You dinied the permission", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            default:
-        }
-    }
 }

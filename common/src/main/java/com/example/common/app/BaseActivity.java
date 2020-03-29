@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.example.lang.utils.Journal;
+
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -18,6 +20,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Journal.i(this.getClass().toString());
         super.onCreate(savedInstanceState);
         // 在界面未初始化之前调用的初始化窗口
         initWidows();

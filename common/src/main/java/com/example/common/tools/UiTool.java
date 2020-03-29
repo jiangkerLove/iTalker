@@ -7,8 +7,6 @@ import android.os.Build;
 import android.util.DisplayMetrics;
 import android.view.Window;
 
-import net.qiujuer.genius.res.Resource;
-
 public class UiTool {
 
     private static int STATUS_BAR_HEIGHT = -1;
